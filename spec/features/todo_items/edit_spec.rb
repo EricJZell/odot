@@ -16,7 +16,7 @@ describe "editing todo items" do
     fill_in "Content", with: "Milk Steak"
     click_button "Save"
     expect(page).to have_content("Todo item updated successfully.")
-    within("ul.todo_items") do
+    within("table.todo_items") do
       expect(page).to have_content("Milk Steak")
     end
     todo_item.reload
