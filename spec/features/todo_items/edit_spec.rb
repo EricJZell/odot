@@ -6,10 +6,7 @@ describe "editing todo items" do
   let!(:todo_item) { todo_list.todo_items.create(content: "Milk") }
 
   before do
-    visit "/todo_lists"
-    within "#todo_list_#{todo_list.id}" do
-      click_link "List Items"
-    end
+    visit_todo_list(todo_list)
     within "#todo_item_#{todo_item.id}" do
       click_link "Edit"
     end
