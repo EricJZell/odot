@@ -20,7 +20,7 @@ describe "viewing todo items" do
     todo_list.todo_items.create(content: "Milk")
     todo_list.todo_items.create(content: "Eggs")
     visit_todo_list(todo_list)
-    expect(page.all("table.todo_items tr").size).to eq(2)
+    expect(page.all("tbody.todo_items tr").size).to eq(2)
     within("table.todo_items") do
       expect(page).to have_content("Milk")
       expect(page).to have_content("Eggs")
