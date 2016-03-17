@@ -3,9 +3,10 @@ require 'spec_helper'
 describe "Completing a todo item" do
   let!(:todo_list) { TodoList.create(title: "Groceries", description: "List of Groceries") }
   let!(:todo_item) { todo_list.todo_items.create(content: "Milk") }
+  let(:user) { create(:user) }
 
   before do
-    allow_any_instance_of(ApplicationController).to receive(:require_user) { true }
+    sign_in(user, password: "treehouse1")
   end
 
   it "is successful when marking a single item complete" do

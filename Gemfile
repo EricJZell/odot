@@ -15,6 +15,7 @@ group :development, :test do
   gem 'capybara', '~> 2.1.0'
   gem 'byebug'
   gem 'pry'
+  gem 'factory_girl_rails'
 end
 
 group :development do

@@ -16,7 +16,7 @@ describe TodoListsController do
 
   context "logged in" do
     before do
-      controller.stub(:require_user).and_return(true)
+      sign_in(create(:user))
     end
 
     describe "GET index" do

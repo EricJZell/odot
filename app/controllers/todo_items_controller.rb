@@ -1,5 +1,6 @@
 class TodoItemsController < ApplicationController
   before_action :find_todo_list
+  before_action :require_user
 
   def index
   end

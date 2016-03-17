@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe "adding todo items" do
+  let(:user) { create(:user) }
+
   before do
-    allow_any_instance_of(ApplicationController).to receive(:require_user) { true }
+    sign_in(user, password: "treehouse1")
   end
 
   let!(:todo_list) { TodoList.create(title: "Groceries", description: "List of Groceries") }
