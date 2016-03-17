@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe "viewing todo items" do
 
+  before do
+    allow_any_instance_of(ApplicationController).to receive(:require_user) { true }
+  end
+
   let!(:todo_list) { TodoList.create(title: "Groceries", description: "List of Groceries") }
 
   it "displays the title of the todo list" do

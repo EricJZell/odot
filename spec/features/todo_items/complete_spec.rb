@@ -4,6 +4,10 @@ describe "Completing a todo item" do
   let!(:todo_list) { TodoList.create(title: "Groceries", description: "List of Groceries") }
   let!(:todo_item) { todo_list.todo_items.create(content: "Milk") }
 
+  before do
+    allow_any_instance_of(ApplicationController).to receive(:require_user) { true }
+  end
+
   it "is successful when marking a single item complete" do
     expect(todo_item.completed_at).to be_nil
     visit_todo_list(todo_list)

@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe "editing todo lists" do
 
+  before do
+    allow_any_instance_of(ApplicationController).to receive(:require_user) { true }
+  end
+
   let!(:todo_list) { TodoList.create(title: "Groceries", description: "Grocery List") }
 
   def update_todo_list(options={})

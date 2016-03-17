@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe "creating todo lists" do
+  before do
+    allow_any_instance_of(ApplicationController).to receive(:require_user) { true }
+  end
 
   def create_todo_list(options={})
     options[:title] ||= "My Todo List"
