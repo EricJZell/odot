@@ -10,8 +10,13 @@
   <div class="nav">
     <h1><%= link_to("Odot", root_path) %></h1>
     <ul>
-      <li><%= link_to("Todo Lists", todo_lists_path) %></li>
-      <li><%= link_to("Sign Up", new_user_path) %></li>
+      <% if @current_user %>
+        <li><%= "Welcome, #{@current_user.first_name}" %></li>
+        <li><%= link_to("Todo Lists", todo_lists_path) %></li>
+        <li><%= link_to("Log Out", user_session_path(:user), method: :delete) %></li>
+      <% else %>
+        <li><%= link_to("Sign Up", new_user_path) %></li>
+      <% end %>
     </ul>
     <br class="clear" />
   </div>

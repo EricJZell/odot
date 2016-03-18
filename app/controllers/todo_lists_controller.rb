@@ -1,23 +1,25 @@
 class TodoListsController < ApplicationController
-  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
   before_action :require_user
+  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+
 
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = current_user.todo_lists
   end
 
   def show
+
   end
 
   def new
-    @todo_list = TodoList.new
+    @todo_list = current_user.todo_lists.new
   end
 
   def edit
   end
 
   def create
-    @todo_list = TodoList.new(todo_list_params)
+    @todo_list = current_user.todo_lists.new(todo_list_params)
 
     respond_to do |format|
       if @todo_list.save
@@ -52,7 +54,7 @@ class TodoListsController < ApplicationController
 
   private
     def set_todo_list
-      @todo_list = TodoList.find(params[:id])
+      @todo_list = current_user.todo_lists.find(params[:id])
     end
 
     def todo_list_params

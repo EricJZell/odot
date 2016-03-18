@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 describe "adding todo items" do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
+  let!(:todo_list) { user.todo_lists.create(title: "Groceries", description: "List of Groceries") }
 
   before do
     sign_in(user, password: "treehouse1")
   end
 
-  let!(:todo_list) { TodoList.create(title: "Groceries", description: "List of Groceries") }
+
 
   def add_item(content)
     click_link("New Todo Item")

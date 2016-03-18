@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe "viewing todo items" do
-  let(:user) { create(:user) }
-  let!(:todo_list) { TodoList.create(title: "Groceries", description: "List of Groceries") }
+  let!(:user) { create(:user) }
+  let!(:todo_list) { user.todo_lists.create(title: "Groceries", description: "List of Groceries") }
 
   context "not logged in" do
     it "requires log in" do

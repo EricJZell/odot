@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe "Completing a todo item" do
-  let!(:todo_list) { TodoList.create(title: "Groceries", description: "List of Groceries") }
+  let!(:user) { create(:user) }
+  let!(:todo_list) { user.todo_lists.create(title: "Groceries", description: "List of Groceries") }
   let!(:todo_item) { todo_list.todo_items.create(content: "Milk") }
-  let(:user) { create(:user) }
+
 
   before do
     sign_in(user, password: "treehouse1")

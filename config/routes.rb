@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "/login" => "user_sessions#new", as: :login
-  resources :user_sessions, only: [:new, :create]
+  resources :user_sessions, only: [:new, :create, :destroy]
 
   resources :users
   resources :todo_lists do
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  root 'todo_lists#index'
+  root 'user_sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

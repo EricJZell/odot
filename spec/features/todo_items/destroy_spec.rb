@@ -1,14 +1,15 @@
 require 'spec_helper'
 
 describe "editing todo items" do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
+  let!(:todo_list) { user.todo_lists.create(title: "Groceries", description: "List of Groceries") }
+  let!(:todo_item) { todo_list.todo_items.create(content: "Milk") }
 
   before do
     sign_in(user, password: "treehouse1")
   end
 
-  let!(:todo_list) { TodoList.create(title: "Groceries", description: "List of Groceries") }
-  let!(:todo_item) { todo_list.todo_items.create(content: "Milk") }
+
 
   it "is successfully deletes todo item" do
     initial_count = TodoItem.count
